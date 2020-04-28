@@ -1,4 +1,4 @@
-package network
+package com.example.retrofitkotlin.network
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -11,11 +11,15 @@ object RetrofitInstance {
     val getClient: GetData
         get() {
             val gson = GsonBuilder().setLenient().create()
+
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+
             val builder = Retrofit.Builder().baseUrl(BASE_URL).client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson)).build()
+
             return builder.create(GetData::class.java)
         }
 }

@@ -1,6 +1,6 @@
-package models
+package com.example.retrofitkotlin.models
 
-class Details (
+class Photo (
     val id: Long = 0,
     val albumId: Long = 0,
     val title: String = " ",
